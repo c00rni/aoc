@@ -16,6 +16,9 @@ public class Calculator {
     }
 
     public int sumDifference() {
+        if (this.firstList.size() != this.secondList.size()) {
+            throw new NoEqualListSize("List must have the same size.");
+        }
         int result = 0;
         for (int count = 0; count < this.firstList.size(); count++) {
             result += Math.abs(this.firstList.get(count) - this.secondList.get(count));
@@ -30,4 +33,11 @@ public class Calculator {
     public ArrayList<Integer> getSecondList() {
         return this.secondList;
     }
+
+    public static class NoEqualListSize extends RuntimeException {
+        public NoEqualListSize(String message) {
+            super(message);
+        }
+    }
+
 }

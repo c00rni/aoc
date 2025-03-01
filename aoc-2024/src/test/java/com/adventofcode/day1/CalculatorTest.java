@@ -1,11 +1,12 @@
 package com.adventofcode.day1;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CalculatorTest {
 
@@ -34,23 +35,32 @@ public class CalculatorTest {
 
     @Test
     public void shouldSortInputLists() {
-        // Given
+        // When
         Calculator calculator = new Calculator(this.firstList, this.secondList);
 
-        // When
+        // Then
         ArrayList<Integer> firstListSaved = calculator.getFirstList();
         ArrayList<Integer> secondListSaved = calculator.getSecondList();
 
-        // Then
-        ArrayList<Integer> expectedList1 = new ArrayList<Integer>();
-        expectedList1.addAll(Arrays.asList(1, 1, 3));
-        ArrayList<Integer> expectedList2 = new ArrayList<Integer>();
-        expectedList2.addAll(Arrays.asList(1, 3, 3));
-        assertEquals(expectedList1, firstListSaved);
-        assertEquals(expectedList2, secondListSaved);
+        Collections.sort(this.firstList);
+        Collections.sort(this.secondList);
+
+        assertEquals(this.firstList, firstListSaved);
+        assertEquals(this.secondList, secondListSaved);
     }
 
-    @Disabled
+    @Test
     public void shouldThowAnErrorWhenTwoArrayDontHaveTheSameLenght() {
+        // Given
+        this.secondList.add(4);
+
+        // When
+        Calculator calculator = new Calculator(this.firstList, this.secondList);
+
+        // Then
+        assertThrows(Calculator.NoEqualListSize.class, () -> {
+            calculator.sumDifference();
+        });
+
     }
 }
