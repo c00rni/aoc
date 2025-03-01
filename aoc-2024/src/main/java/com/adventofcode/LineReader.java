@@ -11,7 +11,7 @@ public class LineReader {
     }
 
     public String readLine() {
-        if (!this.scanner.hasNext()) {
+        if (!this.hasMoreLine()) {
             throw new NoMoreLine("The is not more line to read.");
         }
         try {
@@ -20,6 +20,10 @@ public class LineReader {
             System.err.println(e);
             return "";
         }
+    }
+
+    public Boolean hasMoreLine() {
+        return this.scanner.hasNext();
     }
 
     public static class NoMoreLine extends RuntimeException {

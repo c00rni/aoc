@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Scanner;
 
 /**
@@ -47,5 +48,17 @@ public class FileReaderTest {
         assertThrows(LineReader.NoMoreLine.class, () -> {
             lineReader.readLine();
         });
+    }
+
+    @Test
+    public void shouldIndicateThereIsStillLinesToProcess() {
+        // Given
+        LineReader lineReader = new LineReader(this.scanner);
+
+        // When
+        Boolean result = lineReader.hasMoreLine();
+
+        // Then
+        assertTrue(result);
     }
 }
