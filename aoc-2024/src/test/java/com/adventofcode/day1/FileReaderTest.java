@@ -1,4 +1,4 @@
-package com.adventofcode;
+package com.adventofcode.day1;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;

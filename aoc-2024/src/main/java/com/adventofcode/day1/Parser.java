@@ -1,4 +1,4 @@
-package com.adventofcode;
+package com.adventofcode.day1;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
