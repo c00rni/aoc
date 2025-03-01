@@ -5,10 +5,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day1Solution {
+public class Day1Part2Solution {
     public static void main(String[] args) {
         try {
-            InputStream inputStream = Day1Solution.class.getClassLoader().getResourceAsStream("day1_1_input.txt");
+            InputStream inputStream = Day1Part2Solution.class.getClassLoader().getResourceAsStream("day1_1_input.txt");
             Scanner scanner = new Scanner(inputStream);
 
             LineReader reader = new LineReader(scanner);
@@ -20,7 +20,7 @@ public class Day1Solution {
             ArrayList<Integer> secondList = fileListsOfNumbers.get(1);
 
             Calculator calculator = new Calculator(firstList, secondList);
-            int result = calculator.sumDifference();
+            int result = calculator.getSimilarityScore();
 
             System.out.println("Solution to Advance of code day 1 part 1 is: " + result);
 

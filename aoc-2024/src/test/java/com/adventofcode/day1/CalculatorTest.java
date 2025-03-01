@@ -63,4 +63,16 @@ public class CalculatorTest {
         });
 
     }
+
+    @Test
+    public void shouldCaculateTheSimilarityScore() {
+        // Given
+        Calculator calculator = new Calculator(this.firstList, this.secondList);
+
+        // When
+        int result = calculator.getSimilarityScore();
+
+        // Then
+        assertEquals(8, result);
+    }
 }
