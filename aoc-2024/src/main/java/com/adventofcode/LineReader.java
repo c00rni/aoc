@@ -1,26 +1,30 @@
 package com.adventofcode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.util.Scanner;
 
 public class LineReader {
 
-    private BufferedReader inputStream;
+    private Scanner scanner;
 
-    public LineReader(BufferedReader buffer) {
-        this.inputStream = buffer;
+    public LineReader(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public String readLine() {
+        if (!this.scanner.hasNext()) {
+            throw new NoMoreLine("The is not more line to read.");
+        }
         try {
-            String line = inputStream.readLine();
-            if (line == null) {
-                throw new Error("No more lines.");
-            }
-            return line;
-        } catch (IOException e) {
-            System.err.println("Error occur while reading the input line");
+            return this.scanner.nextLine();
+        } catch (Exception e) {
+            System.err.println(e);
             return "";
+        }
+    }
+
+    public static class NoMoreLine extends RuntimeException {
+        public NoMoreLine(String message) {
+            super(message);
         }
     }
 

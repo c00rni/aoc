@@ -1,11 +1,11 @@
 package com.adventofcode;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-import java.io.BufferedReader;
-import java.io.IOException;
+import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Disabled;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Scanner;
 
 /**
  * Unit test for simple App.
@@ -13,28 +13,39 @@ import java.io.IOException;
 
 public class FileReaderTest {
 
-    @Test
-    public void readline_CallsBufferedReaderReadLine() {
-        // Given
-        String inputLine = "First line.";
-        BufferedReader mockBufferedReader = mock(BufferedReader.class);
-        try {
-            when(mockBufferedReader.readLine()).thenReturn(inputLine);
-        } catch (IOException e) {
-            System.err.println(e);
-        }
+    private Scanner scanner;
 
-        LineReader lineReader = new LineReader(mockBufferedReader);
+    private String inputLine;
+
+    @BeforeEach
+    public void init() {
+        this.inputLine = "First line.";
+        this.scanner = new Scanner(inputLine);
+    }
+
+    @Test
+    public void readline_GetTheContentOfTheNextLine() {
+        // Given
+        LineReader lineReader = new LineReader(this.scanner);
 
         // When
         String result = lineReader.readLine();
 
         // Then
-        assertEquals(inputLine, result);
+        assertEquals(this.inputLine, result);
     }
 
-    @Disabled
+    @Test
     void readline_ThrowsErrorWhenNoMoreLines() {
-    }
+        // Given
+        LineReader lineReader = new LineReader(this.scanner);
 
+        // When
+        lineReader.readLine();
+
+        // Then
+        assertThrows(LineReader.NoMoreLine.class, () -> {
+            lineReader.readLine();
+        });
+    }
 }
