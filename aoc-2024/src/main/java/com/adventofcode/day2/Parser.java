@@ -13,10 +13,10 @@ public class Parser {
 
     private ArrayList<Integer> _extractTwoNumberGroups(String line) {
         Pattern pattern = Pattern.compile("\\s+");
-        String[] numbers = pattern.split(line);
+        String[] stringNumbers = pattern.split(line);
         ArrayList<Integer> arrayListResult = new ArrayList<>();
 
-        for (String number : numbers) {
+        for (String number : stringNumbers) {
             arrayListResult.add(Integer.parseInt(number));
         }
 
@@ -24,14 +24,14 @@ public class Parser {
     }
 
     public List<ArrayList<Integer>> parseToIntegerLists() {
-        List<ArrayList<Integer>> ArrayListResult = new ArrayList<>();
+        List<ArrayList<Integer>> arrayListResult = new ArrayList<>();
 
         while (this.reader.hasMoreLine()) {
             String line = this.reader.readLine();
-            ArrayListResult.add(this._extractTwoNumberGroups(line));
+            arrayListResult.add(this._extractTwoNumberGroups(line));
         }
 
-        return ArrayListResult;
+        return arrayListResult;
     }
 
 }
