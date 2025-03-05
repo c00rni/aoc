@@ -18,13 +18,20 @@ public class Day2Part1Solution {
 
             int safeReport = 0;
             for (ArrayList<Integer> numbers : fileListsOfNumbers) {
-                Report report = new Report(numbers);
-                if (report.isSafe()) {
-                    safeReport++;
+
+                for (int i = 0; i < numbers.size(); i++) {
+                    ArrayList<Integer> copyNumber = new ArrayList<Integer>(numbers);
+                    copyNumber.remove(i);
+                    Report report = new Report(copyNumber, new Checker());
+
+                    if (report.isSafe()) {
+                        safeReport++;
+                        i = numbers.size();
+                    }
                 }
             }
 
-            System.out.println("Solution to Advance of code day 1 part 1 is: " + safeReport);
+            System.out.println("Solution to Advance of code day 2 is: " + safeReport);
 
         } catch (Exception e) {
             System.err.println("Error reading the resource: " + e.getMessage());
