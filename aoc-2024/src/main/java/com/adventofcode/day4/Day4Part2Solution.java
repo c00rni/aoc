@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.io.InputStream;
 import com.adventofcode.day2.LineReader;
 
-public class Day4Part1Solution {
+public class Day4Part2Solution {
     public static void main(String[] args) {
         try {
-            InputStream inputStream = Day4Part1Solution.class.getClassLoader().getResourceAsStream("day4_input.txt");
+            InputStream inputStream = Day4Part2Solution.class.getClassLoader().getResourceAsStream("day4_input.txt");
             Scanner scanner = new Scanner(inputStream);
 
             LineReader reader = new LineReader(scanner);
@@ -19,7 +19,7 @@ public class Day4Part1Solution {
             }
 
             Searcher searcher = new Searcher(grid);
-            System.out.println("Solution to Advance of code day 4 is: " + searcher.countAllOccurrences("XMAS"));
+            System.out.println("Solution to Advance of code day 4 is: " + searcher.countAllMASinX());
 
         } catch (Exception e) {
             System.err.println("Error reading the resource: " + e.getMessage());
