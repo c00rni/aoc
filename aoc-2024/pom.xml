@@ -93,7 +93,7 @@
           <artifactId>exec-maven-plugin</artifactId>
           <version>3.1.0</version>
           <configuration>
-            <mainClass>com.adventofcode.day3.Day3Part1Solution</mainClass>
+            <mainClass>com.adventofcode.day4.Day4Part1Solution</mainClass>
           </configuration>
         </plugin>
       </plugins>
